@@ -41,5 +41,12 @@ def validate(data):
         return False
         
     is_invalid = False
-
+    
+    for index, dictionary in enumerate(data):
+        if not isinstance(dictionary, dict):
+            print(f'Invalid format: expected a dictionary at position {index}.')
+            is_invalid = True
+            
+    if is_invalid:
+        return False
     
