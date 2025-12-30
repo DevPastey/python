@@ -16,9 +16,18 @@ class User:
 
     def send_email(self, receiver, subject, body):
         email = Email(sender=self, receiver=receiver, subject=subject, body=body)
+        receiver.inbox.receive_email(email)
 
 class Inbox:
     def __init__(self):
         self.emails = []
-
     
+    def receive_email(self, email):
+        self.emails.append(email)
+
+alice = User("Alice")
+bob = User("Bob")
+
+alice.send_email(bob, "Hello", "Hi Bob, how are you?")
+
+print(len(bob.inbox.emails))
