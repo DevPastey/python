@@ -9,7 +9,16 @@ class Email:
     def mark_as_read(self):
         self.read = True
 
-email_obj = Email('alice@example.com', 'bob@example.com', 'Hello', 'Hi Bob!')
-print(email_obj.sender)
-print(email_obj.subject)
-print(email_obj.read)
+class User:
+    def __init__(self, name):
+        self.name = name
+        self.inbox = Inbox()
+
+    def send_email(self, receiver, subject, body):
+        email = Email(sender=self, receiver=receiver, subject=subject, body=body)
+
+class Inbox:
+    def __init__(self):
+        self.emails = []
+
+    
