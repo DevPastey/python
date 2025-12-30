@@ -9,6 +9,18 @@ class Email:
     def mark_as_read(self):
         self.read = True
 
+    def display_full_email(self):
+        self.mark_as_read()
+        print('\n--- Email ---')
+        print(f'From: {self.sender.name}')
+        print(f'To: {self.receiver.name}')
+        print(f'Subject: {self.subject}')
+        print(f'Body: {self.body}')
+        print('------------\n')
+
+    def __str__(self):
+        status = 'Read' if self.read else 'Unread'
+        return f"[{status}] From: {self.sender.name} | Subject: {self.subject}"
 class User:
     def __init__(self, name):
         self.name = name
@@ -21,13 +33,12 @@ class User:
 class Inbox:
     def __init__(self):
         self.emails = []
-    
+
     def receive_email(self, email):
         self.emails.append(email)
 
-alice = User("Alice")
-bob = User("Bob")
-
-alice.send_email(bob, "Hello", "Hi Bob, how are you?")
-
-print(len(bob.inbox.emails))
+    def list_emails(self):
+        if not self.emails:
+            print('Your inbox is empty.\n')
+            return
+        
