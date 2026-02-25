@@ -23,6 +23,7 @@ print(repeating_elements([9, 8, 7, 8, 7, 6, 5]))  # expected output : [8, 7]
 
 
 
+
 def exclusive_products(inventory1, inventory2):
     arr1 = [x.upper() for x in inventory1]
     arr2 = [x.upper() for x in inventory2]
