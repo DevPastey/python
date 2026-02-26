@@ -34,7 +34,12 @@ class MyArray:
     def shift(self):
         self.length -= 1
         self.data = self.data[1:]
-        return self.data
+        return 
+    
+    def delete(self, index):
+        self.length -= 1
+        self.data = [data for data in self.data if data != self.data[index]]
+        return 
         
     def __str__(self):
         return f"My Array: length: {self.length}, data: {self.data} "
@@ -50,7 +55,8 @@ new_array.push("watermelon")
 print(new_array)
 # print(new_array.get(3))
 # print(new_array.get(1))
-print(new_array.shift())
+# print(new_array.shift())
+print(new_array.delete(0))
 print(new_array)
 print(new_array.get(1))
 
